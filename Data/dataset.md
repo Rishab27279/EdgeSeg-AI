@@ -1,4 +1,4 @@
-# EdgeSeg AI Dataset
+# EdgeSeg-AI Dataset
 
 A comprehensive dataset for training multimodal segmentation models with challenging prompt-based scenarios, optimized for CPU deployment.
 
@@ -45,24 +45,24 @@ The `dataset.xlsx` file contains:
 ### Installation
 
 1. **Clone the repository**
-    git clone https://github.com/your-username/EdgeSeg-AI.git
-    cd EdgeSeg-AI
+        git clone https://github.com/your-username/EdgeSeg-AI.git
+        cd EdgeSeg-AI
 
 2. **Download and consolidate images**
-    Download and extract both archives
-    unzip dataset_images.zip
-    unzip dataset_images2.zip
+        Download and extract both archives
+        unzip dataset_images.zip
+        unzip dataset_images2.zip
     
     Consolidate into single directory
-    mkdir dataset_images
-    mv dataset_images_part1/* dataset_images/
-    mv dataset_images_part2/* dataset_images/
+        mkdir dataset_images
+        mv dataset_images_part1/* dataset_images/
+        mv dataset_images_part2/* dataset_images/
 
 3. **Integrate VOC Dataset** (Optional)
-    Download PASCAL VOC 2012 dataset
-    wget http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar
-    Extract dataset
-    tar -xf VOCtrainval_11-May-2012.tar
+        Download PASCAL VOC 2012 dataset
+        wget http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar
+        Extract dataset
+        tar -xf VOCtrainval_11-May-2012.tar
 
 ### Verify Installation
 

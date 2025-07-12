@@ -49,14 +49,15 @@ The `dataset.xlsx` file contains:
         cd EdgeSeg-AI
 
 2. **Download and consolidate images**
-        Download and extract both archives ~
+   
+     Download and extract both archives ~
         `dataset_images.zip` and 
         `dataset_images2.zip`
     
     Consolidate into single directory ~
         `mkdir dataset_images`
 
-3. **Integrate VOC Dataset** (Optional)
+4. **Integrate VOC Dataset** (Optional)
         Download PASCAL VOC 2012 dataset ~
         `wget http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar` and 
         Extract dataset ~
@@ -120,17 +121,9 @@ This dataset structure is specifically designed for:
 - **Edge Deployment** - Optimized for CPU-only inference scenarios
 - **Robust Evaluation** - Comprehensive testing across diverse scenarios
 
-## Contributing
-
-We welcome contributions! Please see our contributing guidelines for more details.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Support
 
-If you encounter any issues or have questions, please open an issue on GitHub or contact the development team.
+If you encounter any issues or have questions, please open an issue on GitHub or feel free to contact me.
 
 ---
 

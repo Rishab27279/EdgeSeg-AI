@@ -50,19 +50,17 @@ The `dataset.xlsx` file contains:
 
 2. **Download and consolidate images**
         Download and extract both archives ~
-        `unzip dataset_images.zip`
-        `unzip dataset_images2.zip`
+        `dataset_images.zip` and 
+        `dataset_images2.zip`
     
-    Consolidate into single directory
-        mkdir dataset_images
-        mv dataset_images_part1/* dataset_images/
-        mv dataset_images_part2/* dataset_images/
+    Consolidate into single directory ~
+        `mkdir dataset_images`
 
 3. **Integrate VOC Dataset** (Optional)
-        Download PASCAL VOC 2012 dataset
-        wget http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar
-        Extract dataset
-        tar -xf VOCtrainval_11-May-2012.tar
+        Download PASCAL VOC 2012 dataset ~
+        `wget http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar` and 
+        Extract dataset ~
+        `tar -xf VOCtrainval_11-May-2012.tar`
 
 ### Verify Installation
 

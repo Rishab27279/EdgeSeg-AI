@@ -136,7 +136,7 @@ The following metrics demonstrate the trade-off between processing speed and res
 | **Minimum GPU Memory** | 8GB                  | 4GB         | 50% reduction              |
 | **Processing Time**    | 5 Seconds (GPU)          | 1-2 Minutes (GPU) | Trade-off for efficiency   |
 | **Segmentation Quality** | High               | High        | Maintained                 |
-| **cLoU** | 39.42              | 31.5      | Slightly Compromised                 |
+| **cLoU** | 39.42              | 36.96      | Slightly Compromised                 |
 
 ## 🙏 Acknowledgments
 

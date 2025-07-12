@@ -1,4 +1,4 @@
-# EdgeSeg AI - Prompt-Based Segmentation Examples
+# EdgeSeg-AI - Prompt-Based Segmentation Demo Examples
 
 ## Overview
 

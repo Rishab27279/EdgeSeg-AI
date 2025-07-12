@@ -4,15 +4,15 @@ EdgeSeg AI - Memory-Efficient Prompt-Based Segmentation
 EdgeSeg AI tackles the challenge of performing sophisticated prompt-based image segmentation with limited computational resources. Unlike traditional approaches that require multiple models running simultaneously, our solution uses a sequential model loading strategy to minimize memory usage while maintaining segmentation accuracy.
 
 🎯 Key Features
-Memory-Efficient Architecture - Sequential model loading reduces RAM usage by 60-70%
+Memory-Efficient Architecture: Sequential model loading reduces RAM usage by 60-70%.
 
-Tricky Prompt Handling - Converts complex natural language queries into actionable segmentation tasks
+Tricky Prompt Handling: Converts complex natural language queries into actionable segmentation tasks.
 
-Interactive Prompt Refinement - Users can review and modify simplified prompts before segmentation
+Interactive Prompt Refinement: Users can review and modify simplified prompts before segmentation.
 
-High-Quality Segmentation - Combines Fine-Tuned Florence-2 with SAM for precise object boundaries
+High-Quality Segmentation: Combines Fine-Tuned Florence-2 with SAM for precise object boundaries.
 
-Resource-Friendly - Optimized for free-tier users and standard consumer hardware
+Resource-Friendly: Optimized for free-tier users and standard consumer hardware.
 
 🏗️ Architecture
 Sequential Processing Pipeline
@@ -24,35 +24,35 @@ Complex Prompt → LLM Simplification → Florence-2 Detection → SAM Segmentat
 Model Components
 Component	Purpose	Memory Impact
 LLM	Complex prompt simplification	Loaded only during prompt processing
-Fine-Tuned Florence-2	Bounding box prediction from simplified prompts	Loaded during detection phase
+Fine-Tuned Florence-2	Bounding box prediction from prompts	Loaded during detection phase
 SAM Base	Precise mask generation using bounding boxes	Loaded during segmentation phase
 🔧 How It Works
 1. Prompt Simplification
 Input: Complex natural language prompt (e.g., "What protective gear do motorcycle riders use?")
 
-Process: LLM converts complex queries into clear, actionable descriptions
+Process: LLM converts complex queries into clear, actionable descriptions.
 
-Output: Simplified prompt optimized for object detection
+Output: Simplified prompt optimized for object detection.
 
-User Control: Review and modify simplified prompts before proceeding
+User Control: Review and modify simplified prompts before proceeding.
 
 2. Object Detection
-Unload: LLM is removed from memory
+Unload: LLM is removed from memory.
 
-Load: Fine-Tuned Florence-2 model for bounding box prediction
+Load: Fine-Tuned Florence-2 model for bounding box prediction.
 
-Process: Generate precise bounding boxes from simplified prompts
+Process: Generate precise bounding boxes from simplified prompts.
 
-Advantage: Better accuracy through prompt optimization
+Advantage: Better accuracy through prompt optimization.
 
 3. Segmentation
-Load: SAM Base model alongside Florence-2
+Load: SAM Base model alongside Florence-2.
 
-Process: Use bounding boxes as guidance for mask generation
+Process: Use bounding boxes as guidance for mask generation.
 
-Output: High-quality segmentation masks
+Output: High-quality segmentation masks.
 
-Efficiency: Targeted segmentation reduces computational overhead
+Efficiency: Targeted segmentation reduces computational overhead.
 
 💡 Innovation
 Memory Optimization Strategy
@@ -65,11 +65,11 @@ Our approach uses sequential loading:
 text
 LLM → Unload → Florence-2 + SAM = Reduced Memory Usage (Accessible to all users)
 Performance vs. Efficiency Trade-off
-Sacrifices: Slight reduction in processing speed due to model loading/unloading
+Sacrifices: Slight reduction in processing speed due to model loading/unloading.
 
-Gains: 60-70% reduction in peak memory usage
+Gains: 60-70% reduction in peak memory usage.
 
-Result: Democratized access to advanced segmentation capabilities
+Result: Democratized access to advanced segmentation capabilities.
 
 🎨 Example Results
 Safety Equipment Query
@@ -78,11 +78,15 @@ Original Prompt: "What protective gear do motorcycle riders use?"
 Simplified Prompt: "motorcycle helmet and protective gear"
 
 Original Image	Segmented Result
-![Original](https://s://ik.imagekit.io/rompt**: "Where should I throw the wrapper?"	
+(Insert image here)	(Insert image here)
+Waste Context
+Original Prompt: "Where should I throw the wrapper?"
+
 Simplified Prompt: "trash bin or waste container"
 
 Original Image	Segmented Result
-![Original](https://ik.imagekit.io/l Usage	
+(Insert image here)	(Insert image here)
+🛠️ Installation & Usage
 Requirements
 Python 3.8+
 
@@ -147,10 +151,10 @@ If you find this project helpful:
 
 Give it a star ⭐ - It would mean the world to me!
 
-Share your feedback - Comments and suggestions are always welcome
+Share your feedback - Comments and suggestions are always welcome.
 
-Try it out - Your usage and feedback help improve the project
+Try it out - Your usage and feedback help improve the project.
 
 Your support motivates continued development and helps make advanced AI accessible to everyone.
 
-<p align="center"> <strong>Made with ❤️ for the community</strong><br> <em>Bringing advanced AI capabilities to resource-constrained environments</em> </p>
+<p align="center"> --- <br> <strong>Made with ❤️ for the community</strong> <br> <em>Bringing advanced AI capabilities to resource-constrained environments</em> </p>

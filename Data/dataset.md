@@ -1,105 +1,139 @@
-Dataset Documentation - EdgeSeg AI
-Dataset Overview
+# EdgeSeg AI Dataset
+
+A comprehensive dataset for training multimodal segmentation models with challenging prompt-based scenarios, optimized for CPU deployment.
+
+## Overview
+
 The EdgeSeg AI project utilizes a comprehensive dataset designed for training multimodal segmentation models with challenging prompt-based scenarios. This dataset combines custom annotations with established computer vision benchmarks to create a robust training environment for CPU-optimized AI models.
 
-Dataset Structure
-Core Dataset Components
-Component	Description	Format
-dataset.xlsx	Master dataset file containing image paths, prompts, and annotations	Excel Spreadsheet
-dataset_images/	Consolidated image directory (post-processing)	Image Files
-VOC Dataset	Additional training data from PASCAL VOC 2012	Standard VOC Format
-Dataset Schema
-The dataset.xlsx file contains the following structured information:
+## Features
 
-Image Paths - Customizable file paths for flexible dataset organization
+- **Multimodal Learning** - Combines visual and textual understanding
+- **Prompt-Based Training** - Natural language query responses
+- **Edge Deployment** - CPU-optimized inference
+- **Flexible Architecture** - Easy customization and extension
+- **Production-Ready** - Resource-constrained environment compatibility
 
-Tricky Prompt Questions - Complex natural language queries designed to challenge model understanding
+## Dataset Structure
 
-Bounding Box Coordinates - Precise label annotations for training and testing
+### Core Components
 
-Image Dimensions - Width and height specifications for each image
+| Component | Description | Format |
+|-----------|-------------|---------|
+| `dataset.xlsx` | Master dataset file containing image paths, prompts, and annotations | Excel Spreadsheet |
+| `dataset_images/` | Consolidated image directory (post-processing) | Image Files |
+| VOC Dataset | Additional training data from PASCAL VOC 2012 | Standard VOC Format |
 
-Image Categories - Classification labels for multi-class segmentation tasks
+### Schema
 
-Dataset Setup Instructions
-Step 1: Image Consolidation
-Due to GitHub upload limitations, the image dataset is split across multiple archives:
+The `dataset.xlsx` file contains:
 
-bash
-# Download and extract both archives
-unzip dataset_images.zip
-unzip dataset_images2.zip
+- **Image Paths** - Customizable file paths for flexible dataset organization
+- **Tricky Prompt Questions** - Complex natural language queries designed to challenge model understanding
+- **Bounding Box Coordinates** - Precise label annotations for training and testing
+- **Image Dimensions** - Width and height specifications for each image
+- **Image Categories** - Classification labels for multi-class segmentation tasks
 
-# Consolidate into single directory
-mkdir dataset_images
-mv dataset_images_part1/* dataset_images/
-mv dataset_images_part2/* dataset_images/
-Step 2: VOC Dataset Integration
-Enhance your dataset with PASCAL VOC 2012 benchmark data:
+## Quick Start
 
-bash
-# Download PASCAL VOC 2012 dataset
-wget http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar
+### Prerequisites
 
-# Extract dataset
-tar -xf VOCtrainval_11-May-2012.tar
-Step 3: Dataset Verification
-Ensure proper dataset structure:
+- Python 3.7+
+- Git
+- wget (for Linux/macOS) or equivalent download tool
 
-text
-EdgeSeg-AI/
-├── dataset.xlsx
-├── dataset_images/          # Consolidated image directory
-│   ├── image_001.jpg
-│   ├── image_002.jpg
-│   └── ...
-└── VOCdevkit/              # PASCAL VOC 2012 data
+### Installation
+
+1. **Clone the repository**
+    git clone https://github.com/your-username/EdgeSeg-AI.git
+    cd EdgeSeg-AI
+
+2. **Download and consolidate images**
+    Download and extract both archives
+    unzip dataset_images.zip
+    unzip dataset_images2.zip
+    
+    Consolidate into single directory
+    mkdir dataset_images
+    mv dataset_images_part1/* dataset_images/
+    mv dataset_images_part2/* dataset_images/
+
+3. **Integrate VOC Dataset** (Optional)
+    Download PASCAL VOC 2012 dataset
+    wget http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar
+    Extract dataset
+    tar -xf VOCtrainval_11-May-2012.tar
+
+### Verify Installation
+
+Ensure your directory structure looks like this:
+
+    EdgeSeg-AI/
+    ├── dataset.xlsx
+    ├── dataset_images/ # Consolidated image directory
+    │ ├── image_001.jpg
+    │ ├── image_002.jpg
+    │ └── ...
+    └── VOCdevkit/ # PASCAL VOC 2012 data (optional)
     └── VOC2012/
-        ├── JPEGImages/
-        ├── Annotations/
-        └── ImageSets/
-Custom Dataset Creation
-Creating Your Own Dataset
+    ├── JPEGImages/
+    ├── Annotations/
+    └── ImageSets/
+
+## Usage
+
+### Creating Custom Datasets
+
 To adapt this framework for your specific use case:
 
-Prepare Images - Organize your image collection
+1. **Prepare Images** - Organize your image collection
+2. **Create Annotations** - Generate bounding box coordinates
+3. **Design Prompts** - Develop challenging natural language queries
+4. **Update Excel File** - Modify `dataset.xlsx` with your data
+5. **Validate Structure** - Ensure consistency with the provided schema
 
-Create Annotations - Generate bounding box coordinates
+### Best Practices
 
-Design Prompts - Develop challenging natural language queries
+- **Diverse Prompts** - Include varied linguistic patterns and complexity levels
+- **Balanced Categories** - Maintain representative samples across all classes
+- **Quality Annotations** - Ensure precise bounding box coordinates
+- **Scalable Organization** - Use consistent naming conventions and directory structure
 
-Update Excel File - Modify dataset.xlsx with your data
+## Key Features
 
-Validate Structure - Ensure consistency with the provided schema
+### Innovative Prompt Design
 
-Dataset Best Practices
-Diverse Prompts - Include varied linguistic patterns and complexity levels
-
-Balanced Categories - Maintain representative samples across all classes
-
-Quality Annotations - Ensure precise bounding box coordinates
-
-Scalable Organization - Use consistent naming conventions and directory structure
-
-Training Integration
-This dataset structure is specifically designed for:
-
-Multimodal Learning - Combining visual and textual understanding
-
-Prompt-Based Training - Teaching models to respond to natural language queries
-
-Edge Deployment - Optimized for CPU-only inference scenarios
-
-Robust Evaluation - Comprehensive testing across diverse scenarios
-
-Key Features
-Innovative Prompt Design
 The dataset includes tricky prompt questions that challenge traditional computer vision approaches, enabling the development of more sophisticated multimodal AI systems.
 
-Flexible Architecture
+### Flexible Architecture
+
 The modular dataset structure allows for easy customization and extension, supporting various research and production scenarios.
 
-Production-Ready Format
+### Production-Ready Format
+
 Designed with deployment considerations in mind, ensuring compatibility with resource-constrained environments and CPU-only inference requirements.
+
+## Training Integration
+
+This dataset structure is specifically designed for:
+
+- **Multimodal Learning** - Combining visual and textual understanding
+- **Prompt-Based Training** - Teaching models to respond to natural language queries
+- **Edge Deployment** - Optimized for CPU-only inference scenarios
+- **Robust Evaluation** - Comprehensive testing across diverse scenarios
+
+## Contributing
+
+We welcome contributions! Please see our contributing guidelines for more details.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+If you encounter any issues or have questions, please open an issue on GitHub or contact the development team.
+
+---
 
 This dataset framework supports the EdgeSeg AI project's mission to democratize advanced computer vision capabilities through CPU-optimized, multimodal segmentation technology.

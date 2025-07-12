@@ -1,4 +1,4 @@
-# EdgeSeg-AI : Memory-Efficient Prompt-Based Segmentation
+# EdgeSeg-AI : An Accessible framework for interpreting complex language prompts to perform precise image segmentation on consumer hardware.
 
 <p align="center">
   <strong>A lightweight, memory-optimized approach to complex prompt-based image segmentation that delivers accurate results on resource-constrained devices.</strong>
@@ -8,15 +8,14 @@
 
 ## 🚀 Overview
 
-EdgeSeg-AI tackles the challenge of performing sophisticated prompt-based image segmentation with limited computational resources. Unlike traditional approaches that require multiple models running simultaneously, our solution uses a **sequential model loading strategy** to minimize memory usage while maintaining segmentation accuracy.
+EdgeSeg-AI introduces a novel, lightweight pipeline for complex, prompt-based image segmentation. By sequentially orchestrating a Large Language Model (LLM), the Florence-2 vision model, and the Segment Anything Model (SAM), it can interpret nuanced natural language queries to perform precise segmentation. This unique architectural configuration makes advanced, multi-modal AI accessible on resource-constrained hardware without sacrificing segmentation quality.
 
 ## 🎯 Key Features
 
-- **Memory-Efficient Architecture**: Sequential model loading reduces RAM usage by 60-70%.
-- **Tricky Prompt Handling**: Converts complex natural language queries into actionable segmentation tasks.
+- **Multi-Modal Interpretation**: Translates complex natural language queries into precise segmentation masks.
+- **Novel Model Synergy**: Uniquely combines a prompt-simplifying LLM with Florence-2 for object detection and SAM for mask generation.
 - **Interactive Prompt Refinement**: Users can review and modify simplified prompts before segmentation.
-- **High-Quality Segmentation**: Combines Fine-Tuned Florence-2 with SAM for precise object boundaries.
-- **Resource-Friendly**: Optimized for free-tier users and standard consumer hardware.
+- **Resource-Efficient Architecture**: Enables deployment on standard consumer hardware by implementing a sequential loading strategy that reduces peak memory usage by 60-70%.
 
 ## 🏗️ Architecture
 
@@ -59,7 +58,7 @@ EdgeSeg-AI tackles the challenge of performing sophisticated prompt-based image 
 
 ## 💡 Innovation
 
-### Memory Optimization Strategy
+### A Novel, Lightweight Architecture
 
 **Traditional approaches** load all models simultaneously:
      `VLM + DINO + SAM = High Memory Usage (Problematic for free-tier users)`
@@ -127,6 +126,9 @@ EdgeSeg-AI tackles the challenge of performing sophisticated prompt-based image 
 
 
 ## 📊 Performance Metrics
+
+The following metrics demonstrate the trade-off between processing speed and resource accessibility. Our architecture consciously prioritizes lower hardware requirements to enable wider adoption, accepting a longer inference time to achieve a dramatic reduction in memory footprint.
+
 
 | Metric                 | Traditional Approach | EdgeSeg AI  | Improvement                |
 | ---------------------- | -------------------- | ----------- | -------------------------- |

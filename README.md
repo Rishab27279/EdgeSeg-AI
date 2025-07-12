@@ -1,160 +1,173 @@
-EdgeSeg AI - Memory-Efficient Prompt-Based Segmentation
-<p align="center"> <strong>A lightweight, memory-optimized approach to complex prompt-based image segmentation that delivers accurate results on resource-constrained devices.</strong> </p>
-🚀 Overview
-EdgeSeg AI tackles the challenge of performing sophisticated prompt-based image segmentation with limited computational resources. Unlike traditional approaches that require multiple models running simultaneously, our solution uses a sequential model loading strategy to minimize memory usage while maintaining segmentation accuracy.
+# EdgeSeg AI - Memory-Efficient Prompt-Based Segmentation
 
-🎯 Key Features
-Memory-Efficient Architecture: Sequential model loading reduces RAM usage by 60-70%.
+<p align="center">
+  <strong>A lightweight, memory-optimized approach to complex prompt-based image segmentation that delivers accurate results on resource-constrained devices.</strong>
+</p>
 
-Tricky Prompt Handling: Converts complex natural language queries into actionable segmentation tasks.
+---
 
-Interactive Prompt Refinement: Users can review and modify simplified prompts before segmentation.
+## 🚀 Overview
 
-High-Quality Segmentation: Combines Fine-Tuned Florence-2 with SAM for precise object boundaries.
+EdgeSeg AI tackles the challenge of performing sophisticated prompt-based image segmentation with limited computational resources. Unlike traditional approaches that require multiple models running simultaneously, our solution uses a **sequential model loading strategy** to minimize memory usage while maintaining segmentation accuracy.
 
-Resource-Friendly: Optimized for free-tier users and standard consumer hardware.
+## 🎯 Key Features
 
-🏗️ Architecture
-Sequential Processing Pipeline
-text
-Complex Prompt → LLM Simplification → Florence-2 Detection → SAM Segmentation
-     ↓              ↓                    ↓                   ↓
-  Load LLM    →  Unload LLM      →   Load Florence-2   →   Generate Masks
-                                      Load SAM Base
-Model Components
-Component	Purpose	Memory Impact
-LLM	Complex prompt simplification	Loaded only during prompt processing
-Fine-Tuned Florence-2	Bounding box prediction from prompts	Loaded during detection phase
-SAM Base	Precise mask generation using bounding boxes	Loaded during segmentation phase
-🔧 How It Works
-1. Prompt Simplification
-Input: Complex natural language prompt (e.g., "What protective gear do motorcycle riders use?")
+- **Memory-Efficient Architecture**: Sequential model loading reduces RAM usage by 60-70%.
+- **Tricky Prompt Handling**: Converts complex natural language queries into actionable segmentation tasks.
+- **Interactive Prompt Refinement**: Users can review and modify simplified prompts before segmentation.
+- **High-Quality Segmentation**: Combines Fine-Tuned Florence-2 with SAM for precise object boundaries.
+- **Resource-Friendly**: Optimized for free-tier users and standard consumer hardware.
 
-Process: LLM converts complex queries into clear, actionable descriptions.
+## 🏗️ Architecture
 
-Output: Simplified prompt optimized for object detection.
+### Sequential Processing Pipeline
+  `Complex Prompt → LLM Simplification → Florence-2 Detection → SAM Segmentation
+   ↓ ↓ ↓ ↓
+   Load LLM → Unload LLM → Load Florence-2 → Generate Masks
+   Load SAM Base`
 
-User Control: Review and modify simplified prompts before proceeding.
+### Model Components
 
-2. Object Detection
-Unload: LLM is removed from memory.
+| Component                | Purpose                                        | Memory Impact                        |
+| ------------------------ | ---------------------------------------------- | ------------------------------------ |
+| **LLM**                  | Complex prompt simplification                  | Loaded only during prompt processing |
+| **Fine-Tuned Florence-2**| Bounding box prediction from prompts           | Loaded during detection phase        |
+| **SAM Base**             | Precise mask generation using bounding boxes    | Loaded during segmentation phase     |
 
-Load: Fine-Tuned Florence-2 model for bounding box prediction.
+## 🔧 How It Works
 
-Process: Generate precise bounding boxes from simplified prompts.
+### 1. Prompt Simplification
 
-Advantage: Better accuracy through prompt optimization.
+- **Input**: Complex natural language prompt (e.g., "What protective gear do motorcycle riders use?")
+- **Process**: LLM converts complex queries into clear, actionable descriptions.
+- **Output**: Simplified prompt optimized for object detection.
+- **User Control**: Review and modify simplified prompts before proceeding.
 
-3. Segmentation
-Load: SAM Base model alongside Florence-2.
+### 2. Object Detection
 
-Process: Use bounding boxes as guidance for mask generation.
+- **Unload**: LLM is removed from memory.
+- **Load**: Fine-Tuned Florence-2 model for bounding box prediction.
+- **Process**: Generate precise bounding boxes from simplified prompts.
+- **Advantage**: Better accuracy through prompt optimization.
 
-Output: High-quality segmentation masks.
+### 3. Segmentation
 
-Efficiency: Targeted segmentation reduces computational overhead.
+- **Load**: SAM Base model alongside Florence-2.
+- **Process**: Use bounding boxes as guidance for mask generation.
+- **Output**: High-quality segmentation masks.
+- **Efficiency**: Targeted segmentation reduces computational overhead.
 
-💡 Innovation
-Memory Optimization Strategy
-Traditional approaches load all models simultaneously:
+## 💡 Innovation
 
-text
-VLM + DINO + SAM = High Memory Usage (Problematic for free-tier users)
-Our approach uses sequential loading:
+### Memory Optimization Strategy
 
-text
-LLM → Unload → Florence-2 + SAM = Reduced Memory Usage (Accessible to all users)
-Performance vs. Efficiency Trade-off
-Sacrifices: Slight reduction in processing speed due to model loading/unloading.
+**Traditional approaches** load all models simultaneously:
+     `VLM + DINO + SAM = High Memory Usage (Problematic for free-tier users)`
 
-Gains: 60-70% reduction in peak memory usage.
+**Our approach** uses sequential loading:
+     `LLM → Unload → Florence-2 + SAM = Reduced Memory Usage (Accessible to all users)`
 
-Result: Democratized access to advanced segmentation capabilities.
+### Performance vs. Efficiency Trade-off
 
-🎨 Example Results
-Safety Equipment Query
-Original Prompt: "What protective gear do motorcycle riders use?"
+- **Sacrifices**: Slight reduction in processing speed due to model loading/unloading.
+- **Gains**: 60-70% reduction in peak memory usage.
+- **Result**: Democratized access to advanced segmentation capabilities.
 
-Simplified Prompt: "motorcycle helmet and protective gear"
+## 🎨 Example Results
 
-Original Image	Segmented Result
-(Insert image here)	(Insert image here)
-Waste Context
-Original Prompt: "Where should I throw the wrapper?"
+### Safety Equipment Query
 
-Simplified Prompt: "trash bin or waste container"
+- **Original Prompt**: "What protective gear do motorcycle riders use?"
+- **Simplified Prompt**: "motorcycle helmet and protective gear"
 
-Original Image	Segmented Result
-(Insert image here)	(Insert image here)
-🛠️ Installation & Usage
-Requirements
-Python 3.8+
+| Original Image | Segmented Result |
+| :------------: | :--------------: |
+| ![Motorcycle Rider](URL_TO_YOUR_ORIGINAL_IMAGE_1) | ![Segmented Gear](URL_TO_YOUR_SEGMENTED_IMAGE_1) |
 
-CUDA-compatible GPU (optional but recommended)
+### Waste Context
 
-8GB+ RAM
+- **Original Prompt**: "Where should I throw the wrapper?"
+- **Simplified Prompt**: "trash bin or waste container"
 
-Installation
-bash
-git clone https://github.com/your-username/EdgeSeg-AI.git
-cd EdgeSeg-AI
-pip install -r requirements.txt
-Usage
-python
-from edgeseg import EdgeSegAI
+| Original Image | Segmented Result |
+| :------------: | :--------------: |
+| ![Wrapper](URL_TO_YOUR_ORIGINAL_IMAGE_2) | ![Trash Bin](URL_TO_YOUR_SEGMENTED_IMAGE_2) |
 
-# Initialize the segmentation pipeline
-segmenter = EdgeSegAI()
 
-# Process complex prompt
-result = segmenter.segment_image(
-    image_path="path/to/image.jpg",
-    prompt="What protective gear do motorcycle riders use?"
-)
+## 🛠️ Installation & Usage
 
-# Review simplified prompt (optional)
-print(f"Simplified prompt: {result.simplified_prompt}")
+### Requirements
 
-# Get segmentation mask
-mask = result.segmentation_mask
-📊 Performance Metrics
-Metric	Traditional Approach	EdgeSeg AI	Improvement
-Peak Memory Usage	12-16GB	4-6GB	60-70% reduction
-Minimum GPU Memory	8GB	4GB	50% reduction
-Processing Time	2-3 seconds	4-6 seconds	Trade-off for efficiency
-Segmentation Quality	High	High	Maintained
-🙏 Acknowledgments
-This project is inspired by the groundbreaking work in the LLM-Seg paper by the research team who pioneered the concept of using large language models for image segmentation tasks. Their novel architecture and innovative approach laid the foundation for this work.
+- Python 3.8+
+- CUDA-compatible GPU (optional but recommended)
+- 8GB+ RAM
 
-While the original LLM-Seg implementation achieves superior accuracy through simultaneous model deployment, our adaptation prioritizes computational efficiency to make advanced segmentation accessible to users with limited resources.
+### Installation
+     `git clone https://github.com/your-username/EdgeSeg-AI.git
+     cd EdgeSeg-AI
+     pip install -r requirements.txt`
 
-Hats off to the LLM-Seg authors for their exceptional contribution to the field and for inspiring this resource-optimized implementation.
+### Usage
+     `from edgeseg import EdgeSegAI
+     
+     Initialize the segmentation pipeline
+     segmenter = EdgeSegAI()
+     
+     Process complex prompt
+     result = segmenter.segment_image(
+     image_path="path/to/image.jpg",
+     prompt="What protective gear do motorcycle riders use?"
+     )
+     
+     Review simplified prompt (optional)
+     print(f"Simplified prompt: {result.simplified_prompt}")
+     
+     Get segmentation mask
+     mask = result.segmentation_mask`
 
-🤝 Contributing
-We welcome contributions! Whether it's:
 
-🐛 Bug fixes
+## 📊 Performance Metrics
 
-✨ New features
+| Metric                 | Traditional Approach | EdgeSeg AI  | Improvement                |
+| ---------------------- | -------------------- | ----------- | -------------------------- |
+| **Peak Memory Usage**  | 12-16GB              | 4-6GB       | 60-70% reduction           |
+| **Minimum GPU Memory** | 8GB                  | 4GB         | 50% reduction              |
+| **Processing Time**    | 2-3 seconds          | 4-6 seconds | Trade-off for efficiency   |
+| **Segmentation Quality** | High               | High        | Maintained                 |
 
-📖 Documentation improvements
+## 🙏 Acknowledgments
 
-🎨 UI/UX enhancements
+This project is inspired by the groundbreaking work in the **LLM-Seg paper**. While the original implementation prioritizes accuracy, our adaptation focuses on computational efficiency to make advanced segmentation accessible on resource-constrained hardware.
 
-Please feel free to open issues and submit pull requests.
+Hats off to the **LLM-Seg authors** for their exceptional contribution to the field.
 
-📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 🤝 Contributing
 
-⭐ Support
-If you find this project helpful:
+We welcome contributions! Whether it's bug fixes, new features, or documentation improvements, please feel free to open issues and submit pull requests.
 
-Give it a star ⭐ - It would mean the world to me!
+- 🐛 Bug fixes
+- ✨ New features
+- 📖 Documentation improvements
+- 🎨 UI/UX enhancements
 
-Share your feedback - Comments and suggestions are always welcome.
+## 📝 License
 
-Try it out - Your usage and feedback help improve the project.
+This project is licensed under the MIT License - see the `LICENSE` file for details.
 
-Your support motivates continued development and helps make advanced AI accessible to everyone.
+## ⭐ Support
 
-<p align="center"> --- <br> <strong>Made with ❤️ for the community</strong> <br> <em>Bringing advanced AI capabilities to resource-constrained environments</em> </p>
+If you find this project helpful, your support would mean the world:
+
+- **Give it a star ⭐**
+- **Share your feedback**
+- **Try it out and report any issues**
+
+<br>
+<p align="center">
+  ---
+  <br>
+  <strong>Made with ❤️ for the community</strong>
+  <br>
+  <em>Bringing advanced AI capabilities to resource-constrained environments</em>
+</p>
+

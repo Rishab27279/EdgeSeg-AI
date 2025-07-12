@@ -22,7 +22,7 @@ The EdgeSeg AI project utilizes a comprehensive dataset designed for training mu
 |-----------|-------------|---------|
 | `dataset.xlsx` | Master dataset file containing image paths, prompts, and annotations | Excel Spreadsheet |
 | `dataset_images/` | Consolidated image directory (post-processing) | Image Files |
-| VOC Dataset | Additional training data from PASCAL VOC 2012 | Standard VOC Format |
+| `VOC Dataset` | Additional training data from PASCAL VOC 2012 | Standard VOC Format |
 
 ### Schema
 
@@ -49,9 +49,9 @@ The `dataset.xlsx` file contains:
         cd EdgeSeg-AI
 
 2. **Download and consolidate images**
-        Download and extract both archives
-        unzip dataset_images.zip
-        unzip dataset_images2.zip
+        Download and extract both archives ~
+        `unzip dataset_images.zip`
+        `unzip dataset_images2.zip`
     
     Consolidate into single directory
         mkdir dataset_images

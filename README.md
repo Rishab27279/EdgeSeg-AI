@@ -1,7 +1,7 @@
-# EdgeSeg-AI : An Accessible framework for interpreting complex language prompts to perform precise image segmentation on consumer hardware.
-
+# EdgeSeg-AI
 <p align="center">
-  <strong>A lightweight, memory-optimized approach to complex prompt-based image segmentation that delivers accurate results on resource-constrained devices.</strong>
+  <strong>An Accessible framework for interpreting complex language prompts to perform precise image segmentation on consumer hardware.
+</strong>
 </p>
 
 ---

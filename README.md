@@ -103,7 +103,7 @@ EdgeSeg-AI tackles the challenge of performing sophisticated prompt-based image 
 - 8GB+ RAM
 
 ### Installation
-     git clone https://github.com/your-username/EdgeSeg-AI.git
+     https://github.com/Rishab27279/EdgeSeg-AI.git
      cd EdgeSeg-AI
      pip install -r requirements.txt
 

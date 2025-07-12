@@ -1,4 +1,4 @@
-# EdgeSeg-AI - Memory-Efficient Prompt-Based Segmentation
+# EdgeSeg-AI : Memory-Efficient Prompt-Based Segmentation
 
 <p align="center">
   <strong>A lightweight, memory-optimized approach to complex prompt-based image segmentation that delivers accurate results on resource-constrained devices.</strong>
@@ -8,7 +8,7 @@
 
 ## 🚀 Overview
 
-EdgeSeg AI tackles the challenge of performing sophisticated prompt-based image segmentation with limited computational resources. Unlike traditional approaches that require multiple models running simultaneously, our solution uses a **sequential model loading strategy** to minimize memory usage while maintaining segmentation accuracy.
+EdgeSeg-AI tackles the challenge of performing sophisticated prompt-based image segmentation with limited computational resources. Unlike traditional approaches that require multiple models running simultaneously, our solution uses a **sequential model loading strategy** to minimize memory usage while maintaining segmentation accuracy.
 
 ## 🎯 Key Features
 
@@ -131,7 +131,7 @@ EdgeSeg AI tackles the challenge of performing sophisticated prompt-based image 
 | Metric                 | Traditional Approach | EdgeSeg AI  | Improvement                |
 | ---------------------- | -------------------- | ----------- | -------------------------- |
 | **Peak Memory Usage**  | 12-16GB              | 4-6GB       | 60-70% reduction           |
-| **Minimum GPU Memory** | 8GB                  | 1-2GB         | 75% reduction              |
+| **Minimum GPU Memory** | 8GB                  | 4GB         | 50% reduction              |
 | **Processing Time**    | 1 Minute          | 6-8 Minutes | Trade-off for efficiency   |
 | **Segmentation Quality** | High               | High        | Maintained                 |
 
@@ -162,7 +162,7 @@ If you find this project helpful, your support would mean the world:
 <p align="center">
   ---
   <br>
-  <strong>Made with ❤️ for the community</strong>
+  <strong>Made with ❤️ & 🔥 for the community</strong>
   <br>
   <em>Bringing advanced AI capabilities to resource-constrained environments</em>
 </p>

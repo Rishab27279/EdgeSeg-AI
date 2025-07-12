@@ -60,7 +60,7 @@ EdgeSeg-AI introduces a novel, lightweight pipeline for complex, prompt-based im
 
 ### A Novel, Lightweight Architecture
 
-**Traditional approaches** load all models simultaneously:
+**Recent Research approaches** load all models simultaneously:
      `VLM + DINO + SAM = High Memory Usage (Problematic for free-tier users)`
 
 **Our approach** uses sequential loading:
@@ -130,7 +130,7 @@ EdgeSeg-AI introduces a novel, lightweight pipeline for complex, prompt-based im
 The following metrics demonstrate the trade-off between processing speed and resource accessibility. Our architecture consciously prioritizes lower hardware requirements to enable wider adoption, accepting a longer inference time to achieve a dramatic reduction in memory footprint.
 
 
-| Metric                 | Traditional Approach | EdgeSeg AI  | Improvement                |
+| Metric                 | Modern Research-Backed Approach | EdgeSeg AI  | Improvement                |
 | ---------------------- | -------------------- | ----------- | -------------------------- |
 | **Peak Memory Usage**  | 12-16GB              | 4-6GB       | 60-70% reduction           |
 | **Minimum GPU Memory** | 8GB                  | 4GB         | 50% reduction              |

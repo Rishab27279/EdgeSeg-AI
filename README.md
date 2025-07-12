@@ -74,7 +74,7 @@ EdgeSeg-AI introduces a novel, lightweight pipeline for complex, prompt-based im
 
 ## 🎨 Example Results
 
-### Safety Equipment Query
+### Electronic Device Query
 
 - **Original Prompt**: "Where should I look to know the speed?"
 - **Simplified Prompt**: "Speedometer in car/bike/other-vehicles"

@@ -152,6 +152,7 @@ We welcome contributions! Whether it's bug fixes, new features, or documentation
 - ✨ New features
 - 📖 Documentation improvements
 - 🎨 UI/UX enhancements
+- ✨ Test on State-of-the-Art Benchmark
 
 ## ⭐ Support
 

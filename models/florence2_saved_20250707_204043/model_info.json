@@ -1,0 +1,8 @@
+{
+  "model_name": "florence2_saved_20250707_204043",
+  "save_timestamp": "2025-07-07T20:40:45.310500",
+  "base_model": "microsoft/Florence-2-large",
+  "model_type": "LoRA Fine-tuned Florence-2",
+  "save_path": "/content/gdrive/MyDrive/Florence2_Models/florence2_saved_20250707_204043",
+  "training_completed": true
+}

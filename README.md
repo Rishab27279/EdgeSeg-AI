@@ -1,4 +1,4 @@
-# EdgeSeg AI - Memory-Efficient Prompt-Based Segmentation
+# EdgeSeg-AI - Memory-Efficient Prompt-Based Segmentation
 
 <p align="center">
   <strong>A lightweight, memory-optimized approach to complex prompt-based image segmentation that delivers accurate results on resource-constrained devices.</strong>
@@ -77,12 +77,12 @@ EdgeSeg AI tackles the challenge of performing sophisticated prompt-based image 
 
 ### Safety Equipment Query
 
-- **Original Prompt**: "What protective gear do motorcycle riders use?"
-- **Simplified Prompt**: "motorcycle helmet and protective gear"
+- **Original Prompt**: "Where should I look to know the speed?"
+- **Simplified Prompt**: "Speedometer in car/bike/other-vehicles"
 
 | Original Image | Segmented Result |
 | :------------: | :--------------: |
-| ![Motorcycle Rider](URL_TO_YOUR_ORIGINAL_IMAGE_1) | ![Segmented Gear](URL_TO_YOUR_SEGMENTED_IMAGE_1) |
+| ![Motorcycle Rider](https://ik.imagekit.io/lbiij6kvl/aaa.png?updatedAt=1752259527318) | ![Segmented Gear](https://ik.imagekit.io/lbiij6kvl/bbb.png?updatedAt=1752259736090) |
 
 ### Waste Context
 
@@ -91,7 +91,7 @@ EdgeSeg AI tackles the challenge of performing sophisticated prompt-based image 
 
 | Original Image | Segmented Result |
 | :------------: | :--------------: |
-| ![Wrapper](URL_TO_YOUR_ORIGINAL_IMAGE_2) | ![Trash Bin](URL_TO_YOUR_SEGMENTED_IMAGE_2) |
+| ![Wrapper](https://ik.imagekit.io/lbiij6kvl/555.png?updatedAt=1752266427882) | ![Trash Bin](https://ik.imagekit.io/lbiij6kvl/5555.png?updatedAt=1752266447020) |
 
 
 ## 🛠️ Installation & Usage
@@ -103,12 +103,12 @@ EdgeSeg AI tackles the challenge of performing sophisticated prompt-based image 
 - 8GB+ RAM
 
 ### Installation
-     `git clone https://github.com/your-username/EdgeSeg-AI.git
+     git clone https://github.com/your-username/EdgeSeg-AI.git
      cd EdgeSeg-AI
-     pip install -r requirements.txt`
+     pip install -r requirements.txt
 
 ### Usage
-     `from edgeseg import EdgeSegAI
+     from edgeseg import EdgeSegAI
      
      Initialize the segmentation pipeline
      segmenter = EdgeSegAI()
@@ -123,7 +123,7 @@ EdgeSeg AI tackles the challenge of performing sophisticated prompt-based image 
      print(f"Simplified prompt: {result.simplified_prompt}")
      
      Get segmentation mask
-     mask = result.segmentation_mask`
+     mask = result.segmentation_mask
 
 
 ## 📊 Performance Metrics
@@ -131,15 +131,15 @@ EdgeSeg AI tackles the challenge of performing sophisticated prompt-based image 
 | Metric                 | Traditional Approach | EdgeSeg AI  | Improvement                |
 | ---------------------- | -------------------- | ----------- | -------------------------- |
 | **Peak Memory Usage**  | 12-16GB              | 4-6GB       | 60-70% reduction           |
-| **Minimum GPU Memory** | 8GB                  | 4GB         | 50% reduction              |
-| **Processing Time**    | 2-3 seconds          | 4-6 seconds | Trade-off for efficiency   |
+| **Minimum GPU Memory** | 8GB                  | 1-2GB         | 75% reduction              |
+| **Processing Time**    | 1 Minute          | 6-8 Minutes | Trade-off for efficiency   |
 | **Segmentation Quality** | High               | High        | Maintained                 |
 
 ## 🙏 Acknowledgments
 
 This project is inspired by the groundbreaking work in the **LLM-Seg paper**. While the original implementation prioritizes accuracy, our adaptation focuses on computational efficiency to make advanced segmentation accessible on resource-constrained hardware.
 
-Hats off to the **LLM-Seg authors** for their exceptional contribution to the field.
+Hats off to the **LLM-Seg authors (Junchi Wang and Lei Ke from ETH Zurich)** for their exceptional contribution to the field.
 
 ## 🤝 Contributing
 
@@ -149,10 +149,6 @@ We welcome contributions! Whether it's bug fixes, new features, or documentation
 - ✨ New features
 - 📖 Documentation improvements
 - 🎨 UI/UX enhancements
-
-## 📝 License
-
-This project is licensed under the MIT License - see the `LICENSE` file for details.
 
 ## ⭐ Support
 

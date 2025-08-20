@@ -140,13 +140,13 @@ The following metrics demonstrate the trade-off between processing speed and res
 
 ## 🙏 Acknowledgments
 
-This project is inspired by the groundbreaking work in the **LLM-Seg paper**. While the original implementation prioritizes accuracy, our adaptation focuses on computational efficiency to make advanced segmentation accessible on resource-constrained hardware.
+This project is inspired by the groundbreaking work in the **LLM-Seg paper**. While the original implementation prioritizes accuracy, my adaptation focuses on computational efficiency to make advanced segmentation accessible on resource-constrained hardware.
 
 Hats off to the **LLM-Seg authors (Junchi Wang and Lei Ke from ETH Zurich)** for their exceptional contribution to the field.
 
 ## 🤝 Contributing
 
-We welcome contributions! Whether it's bug fixes, new features, or documentation improvements, please feel free to open issues and submit pull requests.
+I warmly welcome contributions! Whether it's bug fixes, new features, or documentation improvements, please feel free to open issues and submit pull requests.
 
 - 🐛 Bug fixes
 - ✨ New features

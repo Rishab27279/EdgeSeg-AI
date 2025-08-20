@@ -63,7 +63,7 @@ EdgeSeg-AI introduces a novel, lightweight pipeline for complex, prompt-based im
 **Recent Research approaches** load all models simultaneously:
      `VLM + DINO + SAM = High Memory Usage (Problematic for free-tier users)`
 
-**Our approach** uses sequential loading:
+**This approach** uses sequential loading:
      `LLM → Unload → Florence-2 + SAM = Reduced Memory Usage (Accessible to all users)`
 
 ### Performance vs. Efficiency Trade-off
@@ -127,7 +127,7 @@ EdgeSeg-AI introduces a novel, lightweight pipeline for complex, prompt-based im
 
 ## 📊 Performance Metrics
 
-The following metrics demonstrate the trade-off between processing speed and resource accessibility. Our architecture consciously prioritizes lower hardware requirements to enable wider adoption, accepting a longer inference time to achieve a dramatic reduction in memory footprint.
+The following metrics demonstrate the trade-off between processing speed and resource accessibility. This architecture consciously prioritizes lower hardware requirements to enable wider adoption, accepting a longer inference time to achieve a dramatic reduction in memory footprint.
 
 
 | Metric                 | Modern Research-Backed Approach | EdgeSeg AI  | Improvement                |

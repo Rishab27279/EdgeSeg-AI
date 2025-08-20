@@ -168,6 +168,5 @@ If you find this project helpful, your support would mean the world:
   <br>
   <strong>Made with ❤️ & 🔥 for the community</strong>
   <br>
-  <em>Bringing advanced AI capabilities to resource-constrained environments</em>
 </p>
 

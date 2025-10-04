@@ -13,21 +13,17 @@ from transformers import AutoProcessor, AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel
 from segment_anything import sam_model_registry, SamPredictor
 
-# Import the comprehensive LLM Query Simplifier
 from llm_query_simplifier import QuerySimplifierLLM
 from utils import clear_gpu_memory, unload_model_from_memory, get_memory_usage
 
-# Sequential LLM Processing Functions
 def load_and_process_llm_query(complex_query: str) -> str:
     """Load LLM, process query, then unload completely"""
     try:
         st.info("🧠 Stage 1: Loading LLM for query simplification...")
         
-        # Memory status before loading
         memory_before = get_memory_usage()
         st.info(f"📊 Memory before LLM: {memory_before}")
         
-        # Load LLM
         llm_simplifier = QuerySimplifierLLM()
         llm_success = llm_simplifier.download_and_setup()
         
@@ -39,18 +35,15 @@ def load_and_process_llm_query(complex_query: str) -> str:
         memory_after = get_memory_usage()
         st.info(f"📊 Memory after LLM load: {memory_after}")
         
-        # Process query
         st.info("🔄 Processing complex query with LLM...")
         simplified_prompt = llm_simplifier.simplify_query(complex_query)
         st.success(f"✅ Query simplified: {simplified_prompt}")
         
-        # Unload LLM completely
         st.info("🗑️ Unloading LLM to free memory...")
         unload_model_from_memory(llm_simplifier.model)
         unload_model_from_memory(llm_simplifier.tokenizer)
         del llm_simplifier
         
-        # Memory status after unloading
         memory_unloaded = get_memory_usage()
         st.success(f"✅ LLM unloaded. Memory: {memory_unloaded}")
         
@@ -58,24 +51,19 @@ def load_and_process_llm_query(complex_query: str) -> str:
         
     except Exception as e:
         st.error(f"❌ LLM processing error: {e}")
-        # Fallback to rule-based
         fallback_simplifier = QuerySimplifierLLM()
         return fallback_simplifier.rule_based_simplify(complex_query)
 
-# Configuration class adapted for PC (unchanged)
 class Florence2SAMConfig:
     """Configuration class for your fine-tuned model and SAM"""
     def __init__(self):
-        # Update these paths for your PC - modify as needed
-        self.florence_base_path = "../models/florence2_saved_20250707_204043"  # Adjust path for your PC
+        self.florence_base_path = "../models/florence2_saved_20250707_204043"  
         self.florence_adapter_path = os.path.join(self.florence_base_path, "model")
         self.florence_processor_path = os.path.join(self.florence_base_path, "configs")
         
-        # SAM model configuration
         self.sam_checkpoint_path = "sam_vit_b_01ec64.pth"
         self.sam_checkpoint_url = "https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth"
         
-        # Device configuration
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 class Florence2SAMLoader:
@@ -93,11 +81,9 @@ class Florence2SAMLoader:
         try:
             st.info("🔄 Loading fine-tuned detection model...")
             
-            # Memory status before loading
             memory_before = get_memory_usage()
             st.info(f"📊 Memory before Florence-2: {memory_before}")
             
-            # Verify paths exist
             if not os.path.exists(self.config.florence_adapter_path):
                 st.error(f"❌ Adapter path not found: {self.config.florence_adapter_path}")
                 return False
@@ -106,27 +92,24 @@ class Florence2SAMLoader:
                 st.error(f"❌ Processor path not found: {self.config.florence_processor_path}")
                 return False
             
-            # Load base model with flash attention fix and memory optimization
             st.info("📥 Loading base detection model...")
             base_model = AutoModelForCausalLM.from_pretrained(
                 "microsoft/Florence-2-large",
                 torch_dtype=torch.float16,
                 device_map="auto",
                 trust_remote_code=True,
-                attn_implementation="eager",  # Fixed: Disable flash attention
-                low_cpu_mem_usage=True,  # Memory optimization
-                offload_folder="./offload_folder"  # Disk offloading for memory
+                attn_implementation="eager",  
+                low_cpu_mem_usage=True,  
+                offload_folder="./offload_folder" 
             )
             st.success("✅ Base model loaded successfully")
             
-            # Load LoRA adapter
             st.info("🔧 Loading LoRA adapter...")
             self.florence_model = PeftModel.from_pretrained(base_model, self.config.florence_adapter_path)
             self.florence_model.eval()
             self.florence_model = self.florence_model.half()
             st.success("✅ LoRA adapter loaded successfully")
             
-            # Load processor
             st.info("⚙️ Loading processor...")
             self.florence_processor = AutoProcessor.from_pretrained(
                 self.config.florence_processor_path, 
@@ -134,7 +117,6 @@ class Florence2SAMLoader:
             )
             st.success("✅ Processor loaded successfully")
             
-            # Memory status after loading
             memory_after = get_memory_usage()
             st.info(f"📊 Memory after Florence-2: {memory_after}")
             
@@ -149,7 +131,6 @@ class Florence2SAMLoader:
         try:
             st.info("🔄 Loading segmentation model...")
             
-            # Download SAM checkpoint if not exists
             if not os.path.exists(self.config.sam_checkpoint_path):
                 st.info("📥 Downloading segmentation checkpoint...")
                 response = requests.get(self.config.sam_checkpoint_url)
@@ -157,7 +138,6 @@ class Florence2SAMLoader:
                     f.write(response.content)
                 st.success("✅ Segmentation checkpoint downloaded")
             
-            # Load SAM model
             self.sam_model = sam_model_registry["vit_b"](checkpoint=self.config.sam_checkpoint_path)
             self.sam_predictor = SamPredictor(self.sam_model)
             
@@ -186,7 +166,6 @@ class Florence2SAMLoader:
         """Unload all models to free memory"""
         st.info("🗑️ Unloading Segmentation models...")
         
-        # Unload Florence-2
         if self.florence_model is not None:
             unload_model_from_memory(self.florence_model)
             self.florence_model = None
@@ -204,7 +183,6 @@ class Florence2SAMLoader:
             unload_model_from_memory(self.sam_predictor)
             self.sam_predictor = None
         
-        # Final memory cleanup
         clear_gpu_memory()
         
         memory_final = get_memory_usage()
@@ -220,20 +198,17 @@ def detect_objects_with_florence(image: np.ndarray, prompt: str, model_loader: F
         st.info(f"🎯 Using fine-tuned detection model...")
         st.write(f"📝 Input prompt: {prompt}")
         
-        # Convert numpy array to PIL Image
         if isinstance(image, np.ndarray):
             pil_image = Image.fromarray(image.astype('uint8'), 'RGB')
         else:
             pil_image = image
         
-        # Process inputs
         inputs = model_loader.florence_processor(
             text=prompt,
             images=pil_image,
             return_tensors="pt"
         )
         
-        # Move to device and ensure correct dtype
         device = next(model_loader.florence_model.parameters()).device
         model_dtype = next(model_loader.florence_model.parameters()).dtype
         
@@ -241,7 +216,6 @@ def detect_objects_with_florence(image: np.ndarray, prompt: str, model_loader: F
         if 'pixel_values' in inputs:
             inputs['pixel_values'] = inputs['pixel_values'].to(model_dtype)
         
-        # Generate prediction
         with torch.no_grad():
             generated_ids = model_loader.florence_model.generate(
                 input_ids=inputs["input_ids"],
@@ -251,14 +225,12 @@ def detect_objects_with_florence(image: np.ndarray, prompt: str, model_loader: F
                 do_sample=False
             )
         
-        # Decode output
         generated_text = model_loader.florence_processor.batch_decode(
             generated_ids, skip_special_tokens=False
         )[0]
         
         st.write(f"🔍 Raw model output: {generated_text}")
         
-        # Parse the output to extract detections
         detections = parse_florence_output(generated_text)
         
         st.success(f"✅ Detected {len(detections)} objects")
@@ -276,7 +248,6 @@ def parse_florence_output(output_text: str) -> List[Dict]:
         # Remove special tokens
         cleaned = output_text.replace('<s>', '').replace('</s>', '').replace('<pad>', '').strip()
         
-        # Extract objects and coordinates using regex
         pattern = r'([^<]+)<loc_(\d+)><loc_(\d+)><loc_(\d+)><loc_(\d+)>'
         matches = re.findall(pattern, cleaned)
         
@@ -287,7 +258,7 @@ def parse_florence_output(output_text: str) -> List[Dict]:
             detections.append({
                 'label': label,
                 'bbox_normalized': [x1, y1, x2, y2],
-                'confidence': 0.9  # Default confidence score
+                'confidence': 0.9  
             })
         
         st.write(f"🔍 Parsed detections: {detections}")
@@ -306,7 +277,6 @@ def generate_masks_with_sam(image: np.ndarray, detections: List[Dict], model_loa
         
         st.info(f"🎭 Using segmentation model to generate masks...")
         
-        # Set image for SAM predictor
         model_loader.sam_predictor.set_image(image)
         
         masks = []
@@ -320,22 +290,19 @@ def generate_masks_with_sam(image: np.ndarray, detections: List[Dict], model_loa
             bbox = detection['bbox_normalized']
             x1, y1, x2, y2 = [int(coord * dim) for coord, dim in zip(bbox, [w, h, w, h])]
             
-            # SAM expects [x1, y1, x2, y2] format
             box_coords = np.array([x1, y1, x2, y2])
             
             # Generate mask using bounding box prompt
             mask, scores, logits = model_loader.sam_predictor.predict(
                 point_coords=None,
                 point_labels=None,
-                box=box_coords[None, :],  # Add batch dimension
+                box=box_coords[None, :],  
                 multimask_output=False
             )
             
-            # Take the first (and only) mask and ensure proper dtype
             mask_processed = mask[0].astype(np.uint8)
             masks.append(mask_processed)
             
-            # Update progress
             progress_bar.progress((i + 1) / len(detections))
             
         progress_bar.empty()
@@ -353,10 +320,8 @@ def sequential_florence_sam_pipeline(image_input, complex_query: str) -> Dict:
     try:
         st.markdown("## 🔄 Sequential Memory-Optimized Pipeline")
         
-        # Create offload folder for memory management
         os.makedirs("./offload_folder", exist_ok=True)
         
-        # STAGE 1: LLM Query Processing
         st.markdown("""
         <div class="memory-box">
             <h4>🧠 Stage 1: LLM Query Simplification</h4>
@@ -366,7 +331,6 @@ def sequential_florence_sam_pipeline(image_input, complex_query: str) -> Dict:
         
         simplified_prompt = load_and_process_llm_query(complex_query)
         
-        # Display query conversion
         st.markdown("""
         <div class="llm-box">
             <h4>🔄 Query Conversion Complete</h4>
@@ -375,7 +339,6 @@ def sequential_florence_sam_pipeline(image_input, complex_query: str) -> Dict:
         </div>
         """.format(complex_query, simplified_prompt), unsafe_allow_html=True)
         
-        # STAGE 2: Segmentation Processing
         st.markdown("""
         <div class="memory-box">
             <h4>🎯 Stage 2: Segmentation Pipeline</h4>
@@ -383,31 +346,25 @@ def sequential_florence_sam_pipeline(image_input, complex_query: str) -> Dict:
         </div>
         """, unsafe_allow_html=True)
         
-        # Prepare image
         if isinstance(image_input, str):
-            # URL input
             from utils import load_image_from_url
             image = load_image_from_url(image_input)
             if image is None:
                 return {'success': False, 'error': 'Failed to load image from URL'}
         else:
-            # File upload
             image = np.array(image_input)
         
-        # Load Segmentation models
         config = Florence2SAMConfig()
         model_loader = Florence2SAMLoader(config)
         
         if not model_loader.load_all_models():
             return {'success': False, 'error': 'Failed to load Segmentation models'}
         
-        # Stage 2.1: Object detection
         st.markdown("#### 🔄 Stage 2.1: Object Detection")
         detections = detect_objects_with_florence(image, simplified_prompt, model_loader)
         
         if not detections:
             st.warning("⚠️ No objects detected")
-            # Unload models before returning
             model_loader.unload_all_models()
             return {
                 'success': True,
@@ -418,16 +375,13 @@ def sequential_florence_sam_pipeline(image_input, complex_query: str) -> Dict:
                 'num_objects': 0
             }
         
-        # Stage 2.2: Mask generation
         st.markdown("#### 🔄 Stage 2.2: Mask Generation")
         masks = generate_masks_with_sam(image, detections, model_loader)
         
-        # Stage 2.3: Visualization
         st.markdown("#### 🔄 Stage 2.3: Visualization")
         from utils import show_complete_results_streamlit
         show_complete_results_streamlit(image, detections, masks)
         
-        # STAGE 3: Model Cleanup
         st.markdown("""
         <div class="memory-box">
             <h4>🗑️ Stage 3: Memory Cleanup</h4>
@@ -435,7 +389,6 @@ def sequential_florence_sam_pipeline(image_input, complex_query: str) -> Dict:
         </div>
         """, unsafe_allow_html=True)
         
-        # Unload all models
         model_loader.unload_all_models()
         
         return {

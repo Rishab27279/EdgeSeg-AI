@@ -153,7 +153,7 @@ If you find this project helpful, your support would mean the world:
 <p align="center">
   ---
   <br>
-  <strong>Made with ❤️ & 🔥 for the community</strong>
+  <strong>Made by Rishab with ❤️ & 🔥 for the community</strong>
   <br>
 </p>
 

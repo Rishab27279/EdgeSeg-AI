@@ -102,27 +102,14 @@ EdgeSeg-AI introduces a novel, lightweight pipeline for complex, prompt-based im
 - 8GB+ RAM
 
 ### Installation
-     https://github.com/Rishab27279/EdgeSeg-AI.git
-     cd EdgeSeg-AI
-     pip install -r requirements.txt
+    git clone https://github.com/Rishab27279/EdgeSeg-AI.git
+    cd EdgeSeg-AI
+    python -m venv venv
+    venv\Scripts\activate
+    pip install -r requirements.txt
 
-### Usage
-     from edgeseg import EdgeSegAI
-     
-     Initialize the segmentation pipeline
-     segmenter = EdgeSegAI()
-     
-     Process complex prompt
-     result = segmenter.segment_image(
-     image_path="path/to/image.jpg",
-     prompt="What protective gear do motorcycle riders use?"
-     )
-     
-     Review simplified prompt (optional)
-     print(f"Simplified prompt: {result.simplified_prompt}")
-     
-     Get segmentation mask
-     mask = result.segmentation_mask
+### Run this code to start
+    streamlit run main_app.py
 
 
 ## 📊 Performance Metrics
